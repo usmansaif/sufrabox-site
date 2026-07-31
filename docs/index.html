@@ -525,7 +525,7 @@
       width: 78%;
       aspect-ratio: 1/1;
       border-radius: 50%;
-      background: conic-gradient(var(--marigold) 0deg 150deg, var(--paprika) 150deg 255deg, var(--cardamom) 255deg 360deg);
+      background: radial-gradient(circle at 32% 28%, var(--marigold), var(--paprika) 55%, var(--cardamom) 100%);
       box-shadow: inset 0 4px 10px rgba(0,0,0,.15);
     }
     .box-badge {
@@ -695,8 +695,8 @@
       display: flex; align-items: center; justify-content: center;
     }
     .meal-plate-fill { width: 76%; aspect-ratio: 1/1; border-radius: 50%; }
-    .lunch .meal-plate-fill { background: conic-gradient(var(--marigold) 0deg 160deg, var(--cardamom) 160deg 260deg, var(--paprika) 260deg 360deg); }
-    .dinner .meal-plate-fill { background: conic-gradient(var(--paprika) 0deg 190deg, var(--marigold) 190deg 280deg, var(--cardamom) 280deg 360deg); }
+    .lunch .meal-plate-fill { background: radial-gradient(circle at 30% 30%, var(--marigold), var(--cardamom) 60%, var(--paprika) 100%); }
+    .dinner .meal-plate-fill { background: radial-gradient(circle at 30% 30%, var(--paprika), var(--marigold) 60%, var(--cardamom) 100%); }
     .meal-tag {
       position: absolute; top: 14px; left: 14px;
       font-family: 'IBM Plex Mono'; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em;
