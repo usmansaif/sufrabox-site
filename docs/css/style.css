@@ -386,23 +386,25 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   justify-content: center;
   animation: float 6s ease-in-out infinite;
 }
-.plate {
-  width: 72%;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: var(--ivory);
-  box-shadow: inset 0 0 0 10px rgba(247,241,228,.9), 0 18px 30px rgba(0,0,0,.28);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.hero-img-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
 }
-.plate-fill {
-  width: 78%;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, var(--marigold), var(--paprika) 55%, var(--cardamom) 100%);
-  box-shadow: inset 0 4px 10px rgba(0,0,0,.15);
+.hero-meal-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-img-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(20,35,58,0) 45%, rgba(15,28,46,.55) 100%);
+  pointer-events: none;
 }
 .box-badge {
   position: absolute;
