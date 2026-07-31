@@ -243,31 +243,46 @@
     <section id="about">
       <div class="about-grid">
         <div class="about-visual reveal">
-          <div class="route" aria-hidden="true">
-            <span class="label mono">KITCHEN</span>
-            <span class="dot"></span><span class="dash"></span><span class="dot"></span><span class="dash"></span><span class="dot"></span>
-            <span class="label mono">YOUR TABLE</span>
-          </div>
-          <div class="about-boxes">
-            <div class="about-box">
-              <div class="swatch" style="background:var(--marigold);"></div>
-              <h5>Prepared Fresh</h5>
-              <p>Every meal cooked to order, not stored.</p>
+          <div class="journey" aria-hidden="true">
+            <div class="journey-cap journey-start">
+              <span class="journey-cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14a4 4 0 0 1 1-7.9 5 5 0 0 1 9.9 0A4 4 0 0 1 18 14v7H6v-7Z"/><path d="M6 18h12"/></svg></span>
+              <span class="label mono">KITCHEN</span>
             </div>
-            <div class="about-box">
-              <div class="swatch" style="background:var(--paprika);"></div>
-              <h5>Homemade Flavor</h5>
-              <p>Recipes rooted in comforting home cooking.</p>
-            </div>
-            <div class="about-box">
-              <div class="swatch" style="background:var(--cardamom);"></div>
-              <h5>Careful Prep</h5>
-              <p>Selected ingredients, prepared with care.</p>
-            </div>
-            <div class="about-box">
-              <div class="swatch" style="background:var(--navy);"></div>
-              <h5>Balanced Portions</h5>
-              <p>Meals sized right for lunch and dinner.</p>
+
+            <ol class="journey-steps">
+              <li class="journey-step" style="--accent:var(--marigold);">
+                <span class="journey-node">01</span>
+                <div class="journey-body">
+                  <h5>Prepared Fresh</h5>
+                  <p>Every meal cooked to order, not stored.</p>
+                </div>
+              </li>
+              <li class="journey-step" style="--accent:var(--paprika);">
+                <span class="journey-node">02</span>
+                <div class="journey-body">
+                  <h5>Homemade Flavor</h5>
+                  <p>Recipes rooted in comforting home cooking.</p>
+                </div>
+              </li>
+              <li class="journey-step" style="--accent:var(--cardamom);">
+                <span class="journey-node">03</span>
+                <div class="journey-body">
+                  <h5>Careful Prep</h5>
+                  <p>Selected ingredients, prepared with care.</p>
+                </div>
+              </li>
+              <li class="journey-step" style="--accent:var(--navy);">
+                <span class="journey-node">04</span>
+                <div class="journey-body">
+                  <h5>Balanced Portions</h5>
+                  <p>Meals sized right for lunch and dinner.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="journey-cap journey-end">
+              <span class="journey-cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v6a2 2 0 0 0 2 2v10M4 3v6M6 3v6M8 3v6M18 3c-1.7 0-3 1.8-3 4.5V12l2 1.5V21"/></svg></span>
+              <span class="label mono">YOUR TABLE</span>
             </div>
           </div>
         </div>

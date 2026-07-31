@@ -469,61 +469,85 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   padding: 40px;
   position: relative;
 }
-.about-visual .route {
+.journey { position: relative; }
+.journey-cap {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0;
+  gap: 10px;
   width: fit-content;
   max-width: 100%;
-  margin: 0 auto 32px;
-  padding: 11px clamp(12px, 3vw, 20px);
+  padding: 6px 16px 6px 6px;
   background: #fff;
   border-radius: 999px;
   box-shadow: var(--shadow-soft);
 }
-.route .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--marigold);
+.journey-end { margin-top: 4px; }
+.journey-cap-icon {
   flex: none;
-  box-shadow: 0 0 0 4px rgba(232,166,59,.14);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ivory-2);
+  color: var(--navy);
 }
-.route .dot:nth-child(4) { background: var(--cardamom); box-shadow: 0 0 0 4px rgba(63,102,89,.14); }
-.route .dot:nth-child(6) { background: var(--navy); box-shadow: 0 0 0 4px rgba(20,35,58,.12); }
-.route .dash {
-  flex: 1;
-  min-width: clamp(10px, 4vw, 22px);
-  height: 2px;
-  background: repeating-linear-gradient(90deg, var(--navy) 0 6px, transparent 6px 12px);
-  opacity: .55;
-}
-.route .label {
+.journey-cap-icon svg { width: 15px; height: 15px; }
+.journey-cap .label {
   font-family: 'IBM Plex Mono';
-  font-size: clamp(9px, 2.6vw, 10.5px);
+  font-size: 10.5px;
   color: var(--navy);
   white-space: nowrap;
-  padding: 0 clamp(6px, 2vw, 10px);
   font-weight: 600;
   letter-spacing: .03em;
 }
-.about-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.about-box {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px;
-  border: 1px solid var(--hair);
+.journey-steps {
+  list-style: none;
+  margin: 18px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
 }
-.about-box .swatch { width: 26px; height: 26px; border-radius: 8px; margin-bottom: 12px; }
-.about-box h5 { font-family: 'Fraunces'; font-size: 15px; margin: 0 0 4px; color: var(--navy); }
-.about-box p { font-size: 12.5px; color: #6b6e73; margin: 0; line-height: 1.5; }
+.journey-steps::before {
+  content: "";
+  position: absolute;
+  left: 11px; top: 11px; bottom: 11px;
+  width: 2px;
+  background: linear-gradient(var(--marigold), var(--paprika), var(--cardamom), var(--navy));
+  opacity: .3;
+}
+.journey-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+}
+.journey-node {
+  flex: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono';
+  font-size: 9.5px;
+  font-weight: 700;
+}
+.journey-body { padding-top: 1px; }
+.journey-body h5 { font-family: 'Fraunces'; font-size: 15px; margin: 0 0 4px; color: var(--navy); }
+.journey-body p { font-size: 12.5px; color: #6b6e73; margin: 0; line-height: 1.5; }
 
 .about-copy p { font-size: 16.5px; line-height: 1.75; color: #4a4d52; margin: 0 0 18px; }
 
 @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) {
   .about-visual { padding: 28px 20px; }
-  .about-boxes { grid-template-columns: 1fr; }
+  .journey-cap .label { font-size: 10px; }
 }
 
 /* ---------- Why cards ---------- */
