@@ -466,88 +466,72 @@ body.menu-open .mobile-menu { transform: translateY(0); }
 .about-visual {
   background: var(--ivory-2);
   border-radius: 24px;
-  padding: 40px;
+  padding: 24px;
   position: relative;
 }
-.journey { position: relative; }
-.journey-cap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  max-width: 100%;
-  padding: 6px 16px 6px 6px;
-  background: #fff;
-  border-radius: 999px;
+.story-photo {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 20px;
   box-shadow: var(--shadow-soft);
 }
-.journey-end { margin-top: 4px; }
-.journey-cap-icon {
-  flex: none;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ivory-2);
-  color: var(--navy);
+.story-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.journey-cap-icon svg { width: 15px; height: 15px; }
-.journey-cap .label {
-  font-family: 'IBM Plex Mono';
-  font-size: 10.5px;
-  color: var(--navy);
-  white-space: nowrap;
-  font-weight: 600;
-  letter-spacing: .03em;
-}
-.journey-steps {
-  list-style: none;
-  margin: 18px 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  position: relative;
-}
-.journey-steps::before {
+.story-photo::after {
   content: "";
   position: absolute;
-  left: 11px; top: 11px; bottom: 11px;
-  width: 2px;
-  background: linear-gradient(var(--marigold), var(--paprika), var(--cardamom), var(--navy));
-  opacity: .3;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20,35,58,.5) 0%, rgba(20,35,58,0) 32%);
+  pointer-events: none;
 }
-.journey-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  position: relative;
-}
-.journey-node {
-  flex: none;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid var(--accent);
-  color: var(--accent);
+.story-photo-tag {
+  position: absolute;
+  left: 14px; right: 14px; bottom: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'IBM Plex Mono';
-  font-size: 9.5px;
-  font-weight: 700;
+  gap: 8px;
+  background: rgba(255,255,255,.95);
+  border-radius: 999px;
+  padding: 9px 12px;
+  box-shadow: var(--shadow-soft);
 }
-.journey-body { padding-top: 1px; }
-.journey-body h5 { font-family: 'Fraunces'; font-size: 15px; margin: 0 0 4px; color: var(--navy); }
-.journey-body p { font-size: 12.5px; color: #6b6e73; margin: 0; line-height: 1.5; }
+.story-photo-tag .label {
+  font-family: 'IBM Plex Mono';
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.story-photo-tag svg { flex: none; width: 13px; height: 13px; color: var(--marigold); }
+.story-features { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.story-feature { display: flex; align-items: flex-start; gap: 12px; }
+.story-feature-icon {
+  flex: none;
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.story-feature-icon svg { width: 16px; height: 16px; }
+.story-feature h5 { font-family: 'Fraunces'; font-size: 14.5px; margin: 0 0 3px; color: var(--navy); }
+.story-feature p { font-size: 12px; color: #6b6e73; margin: 0; line-height: 1.45; }
 
 .about-copy p { font-size: 16.5px; line-height: 1.75; color: #4a4d52; margin: 0 0 18px; }
 
 @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) {
-  .about-visual { padding: 28px 20px; }
-  .journey-cap .label { font-size: 10px; }
+  .about-visual { padding: 18px; }
+  .story-features { grid-template-columns: 1fr; }
 }
 
 /* ---------- Why cards ---------- */
