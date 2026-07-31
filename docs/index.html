@@ -688,17 +688,15 @@
     }
     .meal-visual.lunch { background: linear-gradient(150deg, #f4dfb2, var(--ivory-2)); }
     .meal-visual.dinner { background: linear-gradient(150deg, #e7c8bd, var(--ivory-2)); }
-    .meal-plate {
-      width: 62%; aspect-ratio: 1/1; border-radius: 50%;
-      background: #fff;
-      box-shadow: inset 0 0 0 7px #fff, 0 10px 22px rgba(20,35,58,.16);
-      display: flex; align-items: center; justify-content: center;
+    .meal-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .meal-plate-fill { width: 76%; aspect-ratio: 1/1; border-radius: 50%; }
-    .lunch .meal-plate-fill { background: radial-gradient(circle at 30% 30%, var(--marigold), var(--cardamom) 60%, var(--paprika) 100%); }
-    .dinner .meal-plate-fill { background: radial-gradient(circle at 30% 30%, var(--paprika), var(--marigold) 60%, var(--cardamom) 100%); }
     .meal-tag {
-      position: absolute; top: 14px; left: 14px;
+      position: absolute; top: 14px; left: 14px; z-index: 1;
       font-family: 'IBM Plex Mono'; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em;
       background: rgba(20,35,58,.85); color: var(--ivory);
       padding: 6px 10px; border-radius: 999px;
@@ -1254,7 +1252,7 @@
           data-highlights="Freshly prepared each morning,Balanced protein &amp; carbs,Great for office lunches">
           <div class="meal-visual lunch">
             <span class="meal-tag mono">Lunch</span>
-            <div class="meal-plate"><div class="meal-plate-fill"></div></div>
+            <img src="https://images.unsplash.com/photo-1667499745120-f9bcef8f584e?w=800&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format" alt="Everyday Lunch Box meal" loading="lazy">
           </div>
           <div class="meal-body">
             <h3>Everyday Lunch Box</h3>
@@ -1270,7 +1268,7 @@
           data-highlights="Wholesome midday portion,Nutrient-balanced ingredients,Steady energy through the day">
           <div class="meal-visual lunch">
             <span class="meal-tag mono">Lunch</span>
-            <div class="meal-plate"><div class="meal-plate-fill"></div></div>
+            <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format" alt="Balanced Lunch Plate meal" loading="lazy">
           </div>
           <div class="meal-body">
             <h3>Balanced Lunch Plate</h3>
@@ -1286,7 +1284,7 @@
           data-highlights="Warm, homestyle flavors,Freshly prepared each evening,Comforting portion size">
           <div class="meal-visual dinner">
             <span class="meal-tag mono">Dinner</span>
-            <div class="meal-plate"><div class="meal-plate-fill"></div></div>
+            <img src="https://images.unsplash.com/photo-1761125065373-05a8e2f85cd5?w=800&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format" alt="Comfort Dinner Box meal" loading="lazy">
           </div>
           <div class="meal-body">
             <h3>Comfort Dinner Box</h3>
@@ -1302,7 +1300,7 @@
           data-highlights="Generous family-style portion,Homestyle recipes,Made fresh for sharing">
           <div class="meal-visual dinner">
             <span class="meal-tag mono">Dinner</span>
-            <div class="meal-plate"><div class="meal-plate-fill"></div></div>
+            <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?w=800&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format" alt="Family Dinner Spread meal" loading="lazy">
           </div>
           <div class="meal-body">
             <h3>Family Dinner Spread</h3>
