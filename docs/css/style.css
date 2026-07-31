@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SufraBox — shared design system
+   SufraBox - shared design system
    Used across every page in /docs. Keep in sync with index.html hero/why
    patterns; page-specific rules live in the "Inner pages" block at the end.
    ========================================================================== */
@@ -208,6 +208,13 @@ header.site.scrolled { padding: 12px 6vw; box-shadow: 0 4px 20px rgba(20,35,58,.
   z-index: 3;
 }
 .brand img { height: 30px; width: auto; }
+.footer-brand .brand img,
+body.home header.site:not(.scrolled) .brand img {
+  background: var(--ivory);
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: var(--shadow-soft);
+}
 .brand span {
   font-family: 'Fraunces';
   font-weight: 700;
@@ -936,26 +943,12 @@ body.menu-open .mobile-menu { transform: translateY(0); }
   color: var(--ivory);
   border-radius: 24px;
   padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .contact-panel h3 { font-family: 'Fraunces'; font-size: 24px; margin: 0 0 14px; font-weight: 600; }
 .contact-panel p { font-size: 15px; color: rgba(247,241,228,.72); line-height: 1.65; margin: 0 0 30px; }
-
-.contact-form { display: grid; gap: 14px; }
-.contact-form label { font-family: 'IBM Plex Mono'; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(247,241,228,.6); margin-bottom: 6px; display: block; }
-.contact-form input, .contact-form textarea, .contact-form select {
-  width: 100%;
-  background: rgba(247,241,228,.08);
-  border: 1px solid rgba(247,241,228,.22);
-  border-radius: 10px;
-  padding: 12px 14px;
-  color: var(--ivory);
-  font-family: 'Plus Jakarta Sans';
-  font-size: 14px;
-}
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(247,241,228,.4); }
-.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: 2px solid var(--marigold); outline-offset: 2px; }
-.contact-form textarea { resize: vertical; min-height: 100px; }
-.contact-form .btn { margin-top: 6px; }
 
 /* ---------- Footer ---------- */
 footer.site-footer { background: var(--navy); color: var(--ivory); padding: 64px 6vw 30px; }
@@ -1016,7 +1009,7 @@ footer.site-footer { background: var(--navy); color: var(--ivory); padding: 64px
 }
 
 /* ==========================================================================
-   Inner pages — page hero, breadcrumbs, prose, plan/service cards, blog
+   Inner pages - page hero, breadcrumbs, prose, plan/service cards, blog
    ========================================================================== */
 
 .page-hero {
