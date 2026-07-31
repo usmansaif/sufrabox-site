@@ -3,13 +3,12 @@
 # NOTE: This site is served by GitHub Pages, which does not run Apache
 # and ignores .htaccess entirely. Clean URLs work there because every
 # page lives at page-name/index.html, and GitHub Pages serves a
-# directory's index.html automatically for /page-name/. The redirect
-# stub files left at the old page-name.html paths (meta refresh +
-# canonical) are what actually redirect old links on GitHub Pages.
+# directory's index.html automatically for /page-name/. The old
+# page-name.html redirect stub files have been removed, so any lingering
+# links to them will 404 on GitHub Pages.
 #
 # This file only takes effect if the site is ever moved to Apache
-# hosting, where it makes /page-name.html 301-redirect to /page-name/
-# instead of relying on the stub pages.
+# hosting, where it makes /page-name.html 301-redirect to /page-name/.
 
 RewriteEngine On
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
