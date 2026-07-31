@@ -32,6 +32,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
 
   <!-- JSON-LD: FoodEstablishment -->
   <script type="application/ld+json">
@@ -148,958 +150,31 @@
   }
   </script>
 
-  <style>
-    :root {
-      --navy: #14233A;
-      --navy-2: #1D3450;
-      --marigold: #E8A63B;
-      --paprika: #C1442D;
-      --cardamom: #3F6659;
-      --ivory: #F7F1E4;
-      --ivory-2: #EFE7D4;
-      --charcoal: #23262B;
-      --hair: rgba(20, 35, 58, 0.12);
-      --shadow-soft: 0 14px 34px rgba(20, 35, 58, 0.12);
-      --shadow-strong: 0 20px 44px rgba(20, 35, 58, 0.22);
-      --ease: cubic-bezier(.16,.84,.44,1);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    body {
-      margin: 0;
-      background: var(--ivory);
-      color: var(--charcoal);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    a { color: inherit; }
-
-    .display { font-family: 'Fraunces', serif; }
-    .mono { font-family: 'IBM Plex Mono', monospace; }
-
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 0;
-      background: var(--navy);
-      color: var(--ivory);
-      padding: 12px 18px;
-      z-index: 999;
-      border-radius: 0 0 8px 0;
-    }
-    .skip-link:focus { left: 0; }
-
-    :focus-visible {
-      outline: 2px solid var(--marigold);
-      outline-offset: 3px;
-    }
-
-    .wrap {
-      max-width: 1220px;
-      margin: 0 auto;
-      padding: 0 6vw;
-    }
-
-    .eyebrow {
-      font-family: 'IBM Plex Mono';
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--paprika);
-      margin: 0 0 14px 0;
-      font-weight: 500;
-    }
-
-    h2.title {
-      font-family: 'Fraunces';
-      font-weight: 600;
-      font-size: clamp(30px, 4vw, 46px);
-      margin: 0 0 18px 0;
-      color: var(--navy);
-      line-height: 1.08;
-    }
-
-    p.lede {
-      font-size: 17px;
-      line-height: 1.65;
-      max-width: 640px;
-      color: #4a4d52;
-      margin: 0 0 40px 0;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 15px 28px;
-      border-radius: 12px;
-      font-family: 'Plus Jakarta Sans';
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
-
-    .btn-primary {
-      background: var(--marigold);
-      color: var(--navy);
-      box-shadow: 0 10px 24px rgba(232, 166, 59, 0.35);
-    }
-    .btn-primary:hover { background: #f0b654; box-shadow: 0 14px 30px rgba(232, 166, 59, 0.45); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--ivory);
-      border-color: rgba(247, 241, 228, 0.4);
-    }
-    .btn-ghost:hover { background: rgba(247, 241, 228, 0.1); border-color: rgba(247,241,228,.7); }
-
-    .btn-dark {
-      background: var(--navy);
-      color: var(--ivory);
-    }
-    .btn-dark:hover { background: var(--navy-2); }
-
-    section {
-      padding: 96px 6vw;
-      max-width: 1220px;
-      margin: 0 auto;
-    }
-
-    section + section { border-top: 1px solid var(--hair); }
-
-    /* ---------- Reveal ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s var(--ease), transform .8s var(--ease);
-    }
-    .reveal.in-view { opacity: 1; transform: translateY(0); }
-    .reveal-stagger.in-view .stagger-item { opacity: 1; transform: translateY(0); }
-    .stagger-item {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
-    }
-    .stagger-item:nth-child(1) { transition-delay: .05s; }
-    .stagger-item:nth-child(2) { transition-delay: .12s; }
-    .stagger-item:nth-child(3) { transition-delay: .19s; }
-    .stagger-item:nth-child(4) { transition-delay: .26s; }
-    .stagger-item:nth-child(5) { transition-delay: .33s; }
-    .stagger-item:nth-child(6) { transition-delay: .40s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal, .stagger-item { opacity: 1 !important; transform: none !important; transition: none !important; }
-      * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
-    }
-
-    /* ---------- Header ---------- */
-    header.site {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 6vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: transparent;
-      transition: background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
-      border-bottom: 1px solid transparent;
-    }
-    header.site.scrolled {
-      background: rgba(247, 241, 228, 0.94);
-      backdrop-filter: blur(8px);
-      padding: 12px 6vw;
-      box-shadow: 0 4px 20px rgba(20,35,58,.08);
-      border-bottom: 1px solid var(--hair);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      z-index: 3;
-    }
-    .brand img { height: 30px; width: auto; }
-    .brand span {
-      font-family: 'Fraunces';
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--ivory);
-      transition: color .35s var(--ease);
-    }
-    header.site.scrolled .brand span { color: var(--navy); }
-
-    nav.primary-nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
-    nav.primary-nav a {
-      color: rgba(247, 241, 228, 0.85);
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      letter-spacing: .01em;
-      transition: color .35s var(--ease), opacity .2s;
-      position: relative;
-      padding-bottom: 4px;
-    }
-    header.site.scrolled nav.primary-nav a { color: var(--navy); opacity: .78; }
-    header.site.scrolled nav.primary-nav a:hover { opacity: 1; }
-    nav.primary-nav a::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 100%;
-      bottom: 0;
-      height: 2px;
-      background: var(--marigold);
-      transition: right .3s var(--ease);
-    }
-    nav.primary-nav a:hover::after { right: 0; }
-
-    .header-actions { display: flex; align-items: center; gap: 14px; }
-    .header-actions .btn-primary { padding: 11px 20px; font-size: 13.5px; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 3;
-      padding: 0;
-    }
-    .hamburger span {
-      display: block;
-      height: 2px;
-      width: 24px;
-      background: var(--ivory);
-      transition: transform .3s var(--ease), opacity .3s var(--ease), background .3s var(--ease);
-    }
-    header.site.scrolled .hamburger span { background: var(--navy); }
-    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    body.menu-open .hamburger span { background: var(--navy); }
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: var(--ivory);
-      z-index: 90;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      transform: translateY(-100%);
-      transition: transform .4s var(--ease);
-    }
-    body.menu-open .mobile-menu { transform: translateY(0); }
-    .mobile-menu a {
-      font-family: 'Fraunces';
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--navy);
-      text-decoration: none;
-    }
-    .mobile-menu .btn { margin-top: 10px; }
-
-    @media (max-width: 900px) {
-      nav.primary-nav, .header-actions .btn-primary { display: none; }
-      .hamburger { display: flex; }
-    }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      position: relative;
-      background: var(--navy);
-      color: var(--ivory);
-      padding: 168px 6vw 110px;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: -160px; top: -160px;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(232,166,59,.20), transparent 70%);
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      left: -120px; bottom: -180px;
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(63,102,89,.22), transparent 70%);
-    }
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-      max-width: 1220px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .hero-copy .eyebrow { color: var(--marigold); }
-    .hero-copy h1 {
-      font-family: 'Fraunces';
-      font-weight: 600;
-      font-size: clamp(36px, 5.4vw, 66px);
-      line-height: 1.06;
-      margin: 0 0 22px;
-    }
-    .hero-copy h1 em { color: var(--marigold); font-style: normal; }
-    .hero-copy p.sub {
-      font-size: 18px;
-      line-height: 1.65;
-      max-width: 480px;
-      color: rgba(247,241,228,.78);
-      margin: 0 0 38px;
-    }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 54px; }
-
-    .hero-trust {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(247,241,228,.16);
-      padding-top: 26px;
-    }
-    .hero-trust div { font-family: 'IBM Plex Mono'; font-size: 12px; color: rgba(247,241,228,.6); }
-    .hero-trust strong { display: block; font-family: 'Fraunces'; font-size: 22px; color: var(--ivory); font-weight: 600; margin-bottom: 2px; }
-
-    /* Hero visual: illustrated meal box (CSS/SVG, no stock photography) */
-    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
-    .box-card {
-      position: relative;
-      width: min(100%, 380px);
-      aspect-ratio: 1/1;
-      border-radius: 28px;
-      background: linear-gradient(155deg, var(--navy-2), #0f1c2e);
-      box-shadow: var(--shadow-strong);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: float 6s ease-in-out infinite;
-    }
-    .plate {
-      width: 72%;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      background: var(--ivory);
-      box-shadow: inset 0 0 0 10px rgba(247,241,228,.9), 0 18px 30px rgba(0,0,0,.28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .plate-fill {
-      width: 78%;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, var(--marigold), var(--paprika) 55%, var(--cardamom) 100%);
-      box-shadow: inset 0 4px 10px rgba(0,0,0,.15);
-    }
-    .box-badge {
-      position: absolute;
-      top: -18px; left: -18px;
-      background: var(--ivory);
-      border-radius: 16px;
-      padding: 10px 12px;
-      box-shadow: var(--shadow-soft);
-      animation: float 5s ease-in-out infinite .4s;
-    }
-    .box-badge img { height: 26px; width: auto; }
-    .steam { position: absolute; top: -34px; left: 50%; transform: translateX(-50%); width: 60px; height: 40px; opacity: .55; }
-    .steam path { animation: steam 3.2s ease-in-out infinite; transform-origin: bottom; }
-    .steam path:nth-child(2) { animation-delay: .4s; }
-    .steam path:nth-child(3) { animation-delay: .8s; }
-    .chip-float {
-      position: absolute;
-      background: var(--ivory);
-      border-radius: 14px;
-      padding: 10px 14px;
-      font-family: 'IBM Plex Mono';
-      font-size: 11px;
-      color: var(--navy);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-    }
-    .chip-float .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cardamom); }
-    .chip-lunch { bottom: 10%; right: -8%; animation: float 5.5s ease-in-out infinite .8s; }
-    .chip-dinner { top: 12%; right: -10%; animation: float 6.5s ease-in-out infinite 1.2s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-    }
-    @keyframes steam {
-      0% { opacity: 0; transform: translateY(0) scaleY(1); }
-      30% { opacity: .8; }
-      100% { opacity: 0; transform: translateY(-16px) scaleY(1.3); }
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-copy p.sub { margin-left: auto; margin-right: auto; }
-      .hero-ctas, .hero-trust { justify-content: center; }
-      .hero-visual { margin-top: 20px; }
-      .chip-lunch, .chip-dinner { display: none; }
-    }
-
-    /* ---------- About ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .about-visual {
-      background: var(--ivory-2);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-    }
-    .about-visual .route {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 28px;
-    }
-    .route .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--marigold); flex: none; }
-    .route .dash { flex: 1; min-width: 18px; height: 2px; background: repeating-linear-gradient(90deg, var(--navy) 0 6px, transparent 6px 12px); }
-    .route .label { font-family: 'IBM Plex Mono'; font-size: 10.5px; color: var(--navy); white-space: nowrap; padding: 0 10px; font-weight: 500; }
-    .about-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .about-box {
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px;
-      border: 1px solid var(--hair);
-    }
-    .about-box .swatch { width: 26px; height: 26px; border-radius: 8px; margin-bottom: 12px; }
-    .about-box h5 { font-family: 'Fraunces'; font-size: 15px; margin: 0 0 4px; color: var(--navy); }
-    .about-box p { font-size: 12.5px; color: #6b6e73; margin: 0; line-height: 1.5; }
-
-    .about-copy p { font-size: 16.5px; line-height: 1.75; color: #4a4d52; margin: 0 0 18px; }
-
-    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- Why cards ---------- */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .why-card {
-      background: #fff;
-      border: 1px solid var(--hair);
-      border-radius: 18px;
-      padding: 32px 26px;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
-    }
-    .why-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(232,166,59,.4);
-    }
-    .why-icon {
-      width: 48px; height: 48px;
-      border-radius: 13px;
-      background: var(--ivory-2);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-      color: var(--paprika);
-      transition: background .3s, color .3s, transform .3s var(--ease);
-    }
-    .why-card:hover .why-icon { background: var(--marigold); color: var(--navy); transform: scale(1.06) rotate(-4deg); }
-    .why-icon svg { width: 24px; height: 24px; }
-    .why-card h3 { font-family: 'Fraunces'; font-size: 19px; color: var(--navy); margin: 0 0 10px; font-weight: 600; }
-    .why-card p { font-size: 14.5px; color: #5a5d62; line-height: 1.6; margin: 0; }
-
-    @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- Meals ---------- */
-    .meal-tabs { display: flex; gap: 10px; margin-bottom: 40px; }
-    .meal-tabs button {
-      font-family: 'Plus Jakarta Sans';
-      font-weight: 700;
-      font-size: 13.5px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--hair);
-      background: #fff;
-      color: var(--navy);
-      cursor: pointer;
-      transition: all .25s var(--ease);
-    }
-    .meal-tabs button.active,
-    .meal-tabs button:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
-
-    .meals-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .meal-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--hair);
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-    }
-    .meal-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-soft); }
-    .meal-visual {
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .meal-visual.lunch { background: linear-gradient(150deg, #f4dfb2, var(--ivory-2)); }
-    .meal-visual.dinner { background: linear-gradient(150deg, #e7c8bd, var(--ivory-2)); }
-    .meal-visual img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .meal-tag {
-      position: absolute; top: 14px; left: 14px; z-index: 1;
-      font-family: 'IBM Plex Mono'; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em;
-      background: rgba(20,35,58,.85); color: var(--ivory);
-      padding: 6px 10px; border-radius: 999px;
-    }
-    .meal-body { padding: 22px 22px 26px; }
-    .meal-body h3 { font-family: 'Fraunces'; font-size: 18px; color: var(--navy); margin: 0 0 8px; font-weight: 600; }
-    .meal-body p { font-size: 13.5px; color: #5a5d62; line-height: 1.55; margin: 0 0 18px; min-height: 62px; }
-    .meal-body .btn { width: 100%; padding: 11px; font-size: 13px; }
-
-    @media (max-width: 980px) { .meals-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .meals-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- Meal Details Dialog ---------- */
-    .meal-dialog-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(20, 35, 58, 0.55);
-      backdrop-filter: blur(3px);
-      opacity: 0;
-      transition: opacity .3s var(--ease);
-    }
-    .meal-dialog-overlay[hidden] { display: none; }
-    .meal-dialog-overlay.is-open { opacity: 1; }
-    .meal-dialog {
-      position: relative;
-      background: var(--ivory);
-      border-radius: 22px;
-      padding: 40px;
-      max-width: 480px;
-      width: 100%;
-      max-height: calc(100vh - 48px);
-      overflow-y: auto;
-      box-shadow: var(--shadow-strong);
-      transform: translateY(18px) scale(.98);
-      opacity: 0;
-      transition: transform .3s var(--ease), opacity .3s var(--ease);
-    }
-    .meal-dialog-overlay.is-open .meal-dialog { transform: translateY(0) scale(1); opacity: 1; }
-    .meal-dialog-close {
-      position: absolute;
-      top: 18px; right: 18px;
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      border: 1px solid var(--hair);
-      background: #fff;
-      color: var(--navy);
-      font-size: 20px;
-      line-height: 1;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .25s, transform .25s var(--ease);
-    }
-    .meal-dialog-close:hover { background: var(--marigold); transform: rotate(90deg); }
-    .meal-dialog-tag { position: static; display: inline-block; margin-bottom: 16px; }
-    .meal-dialog h3 { font-family: 'Fraunces'; font-size: 24px; color: var(--navy); margin: 0 0 14px; font-weight: 600; }
-    .meal-dialog p { font-size: 15px; line-height: 1.65; color: #4a4d52; margin: 0 0 22px; }
-    .meal-dialog-highlights { list-style: none; margin: 0 0 28px; padding: 0; }
-    .meal-dialog-highlights li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 14px; color: var(--charcoal); font-weight: 600;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--hair);
-    }
-    .meal-dialog-highlights li:last-child { border-bottom: none; }
-    .meal-dialog-highlights li::before {
-      content: "✓";
-      flex: none;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: var(--cardamom); color: var(--ivory);
-      font-size: 12px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .meal-dialog .btn { width: 100%; }
-
-    @media (max-width: 560px) {
-      .meal-dialog { padding: 32px 24px; border-radius: 18px; }
-    }
-
-    /* ---------- Quality ---------- */
-    .quality-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .quality-visual {
-      background: var(--navy);
-      border-radius: 24px;
-      padding: 44px;
-      position: relative;
-      overflow: hidden;
-    }
-    .quality-visual::after {
-      content: "";
-      position: absolute; right: -60px; bottom: -60px;
-      width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(232,166,59,.22), transparent 70%);
-    }
-    .quality-visual .qbadge {
-      position: relative; z-index: 1;
-      display: flex; align-items: center; gap: 14px;
-      background: var(--ivory);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-bottom: 16px;
-      box-shadow: var(--shadow-soft);
-    }
-    .quality-visual .qbadge:last-child { margin-bottom: 0; }
-    .qbadge .qicon {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: var(--ivory-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cardamom); flex: none;
-    }
-    .qbadge .qicon svg { width: 20px; height: 20px; }
-    .qbadge h5 { font-family: 'Fraunces'; font-size: 15px; margin: 0 0 2px; color: var(--navy); font-weight: 600; }
-    .qbadge p { font-size: 12px; color: #6b6e73; margin: 0; }
-
-    .quality-checklist { list-style: none; margin: 0 0 34px; padding: 0; }
-    .quality-checklist li {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--hair);
-      font-size: 15.5px;
-      color: var(--charcoal);
-      font-weight: 600;
-    }
-    .quality-checklist li:last-child { border-bottom: none; }
-    .quality-checklist .check {
-      width: 24px; height: 24px; border-radius: 50%;
-      background: var(--cardamom);
-      color: var(--ivory);
-      display: flex; align-items: center; justify-content: center;
-      flex: none; font-size: 13px;
-      transform: scale(0);
-      transition: transform .4s var(--ease);
-    }
-    .reveal-stagger.in-view .quality-checklist .check { transform: scale(1); }
-    .quality-checklist li:nth-child(1) .check { transition-delay: .1s; }
-    .quality-checklist li:nth-child(2) .check { transition-delay: .22s; }
-    .quality-checklist li:nth-child(3) .check { transition-delay: .34s; }
-    .quality-checklist li:nth-child(4) .check { transition-delay: .46s; }
-    .quality-checklist li:nth-child(5) .check { transition-delay: .58s; }
-
-    @media (max-width: 900px) { .quality-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- Mission / Vision ---------- */
-    .mv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .mv-card {
-      border-radius: 22px;
-      padding: 40px 34px;
-    }
-    .mv-card.mission { background: var(--navy); color: var(--ivory); }
-    .mv-card.vision { background: var(--ivory-2); color: var(--charcoal); border: 1px solid var(--hair); }
-    .mv-card .mv-eyebrow { font-family: 'IBM Plex Mono'; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
-    .mv-card.mission .mv-eyebrow { color: var(--marigold); }
-    .mv-card.vision .mv-eyebrow { color: var(--paprika); }
-    .mv-card blockquote {
-      font-family: 'Fraunces'; font-weight: 600;
-      font-size: clamp(20px, 2.4vw, 26px);
-      line-height: 1.35; margin: 0 0 16px;
-    }
-    .mv-card p.mv-sub { font-size: 14.5px; line-height: 1.6; margin: 0; }
-    .mv-card.mission p.mv-sub { color: rgba(247,241,228,.7); }
-    .mv-card.vision p.mv-sub { color: #5a5d62; }
-
-    @media (max-width: 820px) { .mv-grid { grid-template-columns: 1fr; } }
-
-    /* ---------- Reviews ---------- */
-    .reviews-wrap { position: relative; overflow: hidden; touch-action: pan-y; }
-    .reviews-track {
-      display: flex;
-      width: 100%;
-      transition: transform .5s var(--ease);
-    }
-    .review-slide {
-      flex: 0 0 100%;
-      min-width: 0;
-      padding: 4px;
-    }
-    .review-card {
-      background: #fff;
-      border: 1px solid var(--hair);
-      border-radius: 20px;
-      padding: 36px;
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .review-stars { color: var(--marigold); font-size: 18px; letter-spacing: 3px; margin-bottom: 18px; }
-    .review-text { font-family: 'Fraunces'; font-size: clamp(18px, 2vw, 22px); font-weight: 500; color: var(--navy); line-height: 1.5; margin: 0 0 24px; }
-    .review-person { display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .review-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--navy); color: var(--ivory);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Fraunces'; font-weight: 700; font-size: 15px;
-    }
-    .review-person .rname { font-weight: 700; font-size: 14px; color: var(--navy); display: block; }
-    .review-person .rloc { font-size: 12px; color: #6b6e73; }
-
-    .review-dots { display: flex; justify-content: center; gap: 10px; margin-top: 28px; }
-    .review-dots button {
-      width: 9px; height: 9px; border-radius: 50%;
-      border: none; background: var(--hair); cursor: pointer; padding: 0;
-      transition: background .25s, transform .25s;
-    }
-    .review-dots button.active { background: var(--marigold); transform: scale(1.2); }
-
-    @media (max-width: 560px) {
-      .review-card { padding: 28px 22px; border-radius: 16px; }
-      .review-person { flex-wrap: wrap; }
-    }
-
-    /* ---------- Service Areas ---------- */
-    .areas-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-    .area-chip {
-      font-family: 'IBM Plex Mono';
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--navy);
-      background: var(--ivory-2);
-      border: 1px solid var(--hair);
-      padding: 10px 18px;
-      border-radius: 999px;
-      transition: background .25s, transform .25s var(--ease);
-    }
-    .area-chip:hover { background: var(--marigold); transform: translateY(-2px); }
-
-    /* ---------- FAQ ---------- */
-    .faq-list { max-width: 780px; }
-    .faq-item {
-      border-bottom: 1px solid var(--hair);
-    }
-    .faq-q {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 24px 0;
-      cursor: pointer;
-      font-family: 'Fraunces';
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--navy);
-    }
-    .faq-q .plus {
-      flex: none;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      border: 1px solid var(--hair);
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      transition: transform .3s var(--ease), background .3s;
-    }
-    .faq-q .plus::before, .faq-q .plus::after {
-      content: ""; position: absolute; background: var(--navy);
-    }
-    .faq-q .plus::before { width: 12px; height: 2px; }
-    .faq-q .plus::after { width: 2px; height: 12px; transition: transform .3s var(--ease); }
-    .faq-item.open .faq-q .plus { background: var(--marigold); }
-    .faq-item.open .faq-q .plus::after { transform: scaleY(0); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .4s var(--ease);
-    }
-    .faq-a p { font-size: 15px; line-height: 1.65; color: #4a4d52; margin: 0 0 24px; max-width: 620px; }
-
-    /* ---------- Contact ---------- */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-    }
-    .contact-list { list-style: none; margin: 0; padding: 0; }
-    .contact-list li {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--hair);
-    }
-    .contact-list .cicon {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: var(--ivory-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paprika); flex: none;
-    }
-    .contact-list .cicon svg { width: 20px; height: 20px; }
-    .contact-list .clabel { font-size: 12px; color: #6b6e73; margin: 0 0 2px; font-family: 'IBM Plex Mono'; text-transform: uppercase; letter-spacing: .06em; }
-    .contact-list .cvalue { font-size: 15.5px; font-weight: 700; color: var(--navy); text-decoration: none; }
-    .contact-list .cvalue:hover { color: var(--paprika); }
-
-    .contact-social { display: flex; gap: 12px; margin-top: 28px; }
-    .contact-social a {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--navy); color: var(--ivory);
-      display: flex; align-items: center; justify-content: center;
-      transition: background .25s, transform .25s var(--ease);
-    }
-    .contact-social a:hover { background: var(--marigold); color: var(--navy); transform: translateY(-3px); }
-    .contact-social svg { width: 18px; height: 18px; }
-
-    .contact-panel {
-      background: var(--navy);
-      color: var(--ivory);
-      border-radius: 24px;
-      padding: 44px;
-    }
-    .contact-panel h3 { font-family: 'Fraunces'; font-size: 24px; margin: 0 0 14px; font-weight: 600; }
-    .contact-panel p { font-size: 15px; color: rgba(247,241,228,.72); line-height: 1.65; margin: 0 0 30px; }
-
-    /* ---------- Footer ---------- */
-    footer.site-footer { background: var(--navy); color: var(--ivory); padding: 64px 6vw 30px; }
-    .footer-grid {
-      max-width: 1220px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 44px;
-      border-bottom: 1px solid rgba(247,241,228,.14);
-    }
-    .footer-brand .brand { margin-bottom: 16px; }
-    .footer-brand .brand span { color: var(--ivory); }
-    .footer-brand p { font-size: 14px; line-height: 1.65; color: rgba(247,241,228,.65); max-width: 300px; margin: 0; }
-    .footer-col h5 { font-family: 'IBM Plex Mono'; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--marigold); margin: 0 0 18px; }
-    .footer-col ul { list-style: none; margin: 0; padding: 0; }
-    .footer-col li { margin-bottom: 12px; }
-    .footer-col a { color: rgba(247,241,228,.75); text-decoration: none; font-size: 14px; }
-    .footer-col a:hover { color: var(--ivory); }
-    .footer-bottom {
-      max-width: 1220px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      padding-top: 26px;
-      font-family: 'IBM Plex Mono'; font-size: 12px; color: rgba(247,241,228,.45);
-    }
-    .footer-bottom .footer-social { display: flex; gap: 10px; }
-    .footer-bottom .footer-social a {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(247,241,228,.08);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--ivory);
-    }
-    .footer-bottom .footer-social svg { width: 15px; height: 15px; }
-
-    @media (max-width: 900px) {
-      footer.site-footer { padding: 56px 6vw 26px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
-      .footer-brand { grid-column: 1 / -1; }
-      .footer-brand p { max-width: 420px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
-    }
-    @media (max-width: 560px) {
-      section { padding: 70px 6vw; }
-    }
-    @media (max-width: 480px) {
-      footer.site-footer { padding: 48px 6vw 24px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; padding-bottom: 32px; }
-      .footer-brand p { max-width: none; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-bottom .footer-social { order: -1; }
-    }
-  </style>
 </head>
 
-<body>
+<body class="home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site" id="siteHeader">
-    <a class="brand" href="#home">
+    <a class="brand" href="index.html">
       <img src="sufrabox-icon.png" alt="SufraBox logo" width="30" height="35" loading="eager">
       <span>SufraBox</span>
     </a>
 
     <nav class="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#why">Why SufraBox</a></li>
-        <li><a href="#quality">Quality</a></li>
-        <li><a href="#meals">Meals</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html" class="is-active">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="weekly-menu.html">Menus</a></li>
+        <li><a href="meal-plans.html">Meal Plans</a></li>
+        <li><a href="homemade-food-delivery.html">Services</a></li>
+        <li><a href="delivery-information.html">Delivery</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn-primary" href="#contact">Contact Us</a>
+      <a class="btn btn-primary" href="contact-us.html">Contact Us</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -1107,14 +182,14 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#why">Why SufraBox</a>
-    <a href="#quality">Quality</a>
-    <a href="#meals">Meals</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
-    <a class="btn btn-primary" href="#contact">Contact Us</a>
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About Us</a>
+    <a href="weekly-menu.html">Menus</a>
+    <a href="meal-plans.html">Meal Plans</a>
+    <a href="homemade-food-delivery.html">Services</a>
+    <a href="delivery-information.html">Delivery</a>
+    <a href="blog/index.html">Blog</a>
+    <a class="btn btn-primary" href="contact-us.html">Contact Us</a>
   </div>
 
   <main id="main">
@@ -1194,6 +269,7 @@
           <p>SufraBox began with a simple idea: everyday meals in Lahore should feel like they came from someone's own kitchen. Fresh ingredients, familiar flavors, and a portion that actually satisfies — that's what we set out to deliver, every single day.</p>
           <p>Each lunch and dinner is freshly prepared using quality ingredients, cooked the way home food should be — comforting, balanced, and consistent. No shortcuts, no compromise on taste.</p>
           <p>Customer satisfaction sits at the center of everything we do. From the first bite to the last, our goal is a meal you look forward to.</p>
+          <a class="btn btn-outline" href="about-us.html">Read Our Full Story</a>
         </div>
       </div>
     </section>
@@ -1242,7 +318,7 @@
     <section id="meals">
       <p class="eyebrow reveal">Our Meals</p>
       <h2 class="title reveal">Lunch and dinner, done right</h2>
-      <p class="lede reveal">Fresh meal boxes prepared daily — balanced for the middle of your day, comforting by evening.</p>
+      <p class="lede reveal">Fresh meal boxes prepared daily — balanced for the middle of your day, comforting by evening. See the <a href="weekly-menu.html">full weekly menu</a> or explore <a href="meal-plans.html">meal plans</a> for families, offices, and students.</p>
 
       <div class="meals-grid reveal-stagger reveal">
         <article class="meal-card stagger-item"
@@ -1308,6 +384,10 @@
             <button type="button" class="btn btn-dark meal-details-btn">View Details</button>
           </div>
         </article>
+      </div>
+      <div style="margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a class="btn btn-dark" href="weekly-menu.html">View Weekly Menu</a>
+        <a class="btn btn-outline" href="office-lunch-delivery.html">Office &amp; Corporate Meals</a>
       </div>
     </section>
 
@@ -1429,6 +509,7 @@
         <span class="area-chip">Bahria Town Lahore</span>
         <span class="area-chip">Wapda Town</span>
       </div>
+      <p class="reveal" style="margin-top:24px;"><a class="btn btn-outline" href="delivery-information.html">Full Delivery Information &amp; How Ordering Works</a></p>
     </section>
 
     <!-- FAQ -->
@@ -1465,6 +546,7 @@
           </div>
         </div>
       </div>
+      <p class="reveal" style="margin-top:24px;"><a class="btn btn-outline" href="faq.html">View All FAQs</a></p>
     </section>
 
     <!-- CONTACT -->
@@ -1504,7 +586,10 @@
           <p class="eyebrow" style="color:var(--marigold);">Ready when you are</p>
           <h3>Fresh meals, every day</h3>
           <p>Call or message us to arrange lunch and dinner meals for your location in Lahore. We're happy to help you get started.</p>
-          <a class="btn btn-primary" href="tel:+923000000000">Call Us Now</a>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="tel:+923000000000">Call Us Now</a>
+            <a class="btn btn-ghost" href="contact-us.html">Full Contact Page</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1514,35 +599,47 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="#home">
+        <a class="brand" href="index.html">
           <img src="sufrabox-icon.png" alt="SufraBox logo" width="28" height="33" loading="lazy">
           <span>SufraBox</span>
         </a>
-        <p>Fresh, homemade-style lunch and dinner meals made with quality ingredients — for customers across Lahore.</p>
+        <p>Fresh, homemade-style lunch and dinner meals made with quality ingredients — delivered daily across Lahore.</p>
       </div>
       <div class="footer-col">
-        <h5>Explore</h5>
+        <h5>Company</h5>
         <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#why">Why SufraBox</a></li>
-          <li><a href="#quality">Quality</a></li>
-          <li><a href="#meals">Meals</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>More</h5>
+        <h5>Menus &amp; Plans</h5>
         <ul>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#home">Home</a></li>
+          <li><a href="weekly-menu.html">Weekly Menu</a></li>
+          <li><a href="monthly-menu.html">Monthly Menu</a></li>
+          <li><a href="meal-plans.html">Meal Plans</a></li>
+          <li><a href="office-lunch-delivery.html">Office Lunch Delivery</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
+        <h5>Services</h5>
         <ul>
-          <li><a href="tel:+923000000000">+92 300 0000000</a></li>
-          <li><a href="mailto:hello@sufrabox.com">hello@sufrabox.com</a></li>
-          <li><a href="#contact">Lahore, Pakistan</a></li>
+          <li><a href="homemade-food-delivery.html">Homemade Food Delivery</a></li>
+          <li><a href="lunch-delivery.html">Lunch Delivery</a></li>
+          <li><a href="dinner-delivery.html">Dinner Delivery</a></li>
+          <li><a href="event-catering.html">Event Catering</a></li>
+          <li><a href="delivery-information.html">Delivery Information</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
         </ul>
       </div>
     </div>
@@ -1559,168 +656,7 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      "use strict";
-
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      /* Sticky header background on scroll */
-      var header = document.getElementById('siteHeader');
-      function onScroll() {
-        if (window.scrollY > 40) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-      }
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-
-      /* Mobile menu */
-      var hamburger = document.getElementById('hamburgerBtn');
-      var mobileMenu = document.getElementById('mobileMenu');
-      hamburger.addEventListener('click', function () {
-        var open = document.body.classList.toggle('menu-open');
-        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      });
-      mobileMenu.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          document.body.classList.remove('menu-open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.setAttribute('aria-label', 'Open menu');
-        });
-      });
-
-      /* Scroll reveal */
-      var revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-              io.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-        revealEls.forEach(function (el) { io.observe(el); });
-      } else {
-        revealEls.forEach(function (el) { el.classList.add('in-view'); });
-      }
-
-      /* FAQ accordion */
-      document.querySelectorAll('.faq-item').forEach(function (item) {
-        var btn = item.querySelector('.faq-q');
-        var answer = item.querySelector('.faq-a');
-        btn.addEventListener('click', function () {
-          var isOpen = item.classList.contains('open');
-          document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
-            if (openItem !== item) {
-              openItem.classList.remove('open');
-              openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-              openItem.querySelector('.faq-a').style.maxHeight = null;
-            }
-          });
-          if (isOpen) {
-            item.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-            answer.style.maxHeight = null;
-          } else {
-            item.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-          }
-        });
-      });
-
-      /* Reviews carousel */
-      var track = document.getElementById('reviewsTrack');
-      var wrap = document.getElementById('reviewsWrap');
-      var dotsWrap = document.getElementById('reviewDots');
-      var slides = track.querySelectorAll('.review-slide');
-      var current = 0;
-      var autoplayTimer;
-
-      slides.forEach(function (_, i) {
-        var dot = document.createElement('button');
-        dot.setAttribute('aria-label', 'Show review ' + (i + 1));
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', function () { goTo(i); resetAutoplay(); });
-        dotsWrap.appendChild(dot);
-      });
-      var dots = dotsWrap.querySelectorAll('button');
-
-      function goTo(i) {
-        current = (i + slides.length) % slides.length;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        dots.forEach(function (d, di) { d.classList.toggle('active', di === current); });
-      }
-      function next() { goTo(current + 1); }
-      function resetAutoplay() {
-        clearInterval(autoplayTimer);
-        autoplayTimer = setInterval(next, 6000);
-      }
-      resetAutoplay();
-      wrap.addEventListener('mouseenter', function () { clearInterval(autoplayTimer); });
-      wrap.addEventListener('mouseleave', resetAutoplay);
-
-      /* Swipe support */
-      var touchStartX = 0;
-      wrap.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-      wrap.addEventListener('touchend', function (e) {
-        var delta = e.changedTouches[0].screenX - touchStartX;
-        if (Math.abs(delta) > 40) {
-          delta < 0 ? goTo(current + 1) : goTo(current - 1);
-          resetAutoplay();
-        }
-      }, { passive: true });
-
-      /* Meal details dialog */
-      var mealOverlay = document.getElementById('mealDialogOverlay');
-      var mealTag = document.getElementById('mealDialogTag');
-      var mealTitle = document.getElementById('mealDialogTitle');
-      var mealDesc = document.getElementById('mealDialogDesc');
-      var mealHighlights = document.getElementById('mealDialogHighlights');
-      var mealClose = document.getElementById('mealDialogClose');
-      var lastFocused = null;
-
-      function openMealDialog(card) {
-        lastFocused = document.activeElement;
-        mealTag.textContent = card.getAttribute('data-tag') || '';
-        mealTitle.textContent = card.getAttribute('data-name') || '';
-        mealDesc.textContent = card.getAttribute('data-desc') || '';
-        mealHighlights.innerHTML = '';
-        (card.getAttribute('data-highlights') || '').split(',').forEach(function (item) {
-          if (!item.trim()) return;
-          var li = document.createElement('li');
-          li.textContent = item.trim();
-          mealHighlights.appendChild(li);
-        });
-        mealOverlay.hidden = false;
-        requestAnimationFrame(function () { mealOverlay.classList.add('is-open'); });
-        document.body.style.overflow = 'hidden';
-        mealClose.focus();
-      }
-
-      function closeMealDialog() {
-        mealOverlay.classList.remove('is-open');
-        document.body.style.overflow = '';
-        setTimeout(function () { mealOverlay.hidden = true; }, 300);
-        if (lastFocused) lastFocused.focus();
-      }
-
-      document.querySelectorAll('.meal-details-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          openMealDialog(btn.closest('.meal-card'));
-        });
-      });
-      mealClose.addEventListener('click', closeMealDialog);
-      mealOverlay.addEventListener('click', function (e) {
-        if (e.target === mealOverlay) closeMealDialog();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !mealOverlay.hidden) closeMealDialog();
-      });
-    })();
-  </script>
+  <script src="js/site.js"></script>
 </body>
 
 </html>
