@@ -597,7 +597,7 @@ body.menu-open .mobile-menu { transform: translateY(0); }
 
 .meals-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .meal-card {
@@ -957,7 +957,7 @@ footer.site-footer { background: var(--navy); color: var(--ivory); padding: 64px
 .footer-grid {
   max-width: 1220px; margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 44px;
   border-bottom: 1px solid rgba(245,250,255,.14);
