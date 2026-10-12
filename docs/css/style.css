@@ -217,6 +217,12 @@ body.home header.site:not(.scrolled) .brand img {
   padding: 5px;
   box-shadow: var(--shadow-soft);
 }
+.brand img.logo-dark, .brand img.logo-light { height: 44px !important; width: auto !important; background: none !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+.brand img.logo-light { display: none; }
+body.home header.site:not(.scrolled) .brand img.logo-dark { display: none; }
+body.home header.site:not(.scrolled) .brand img.logo-light { display: block; }
+.footer-brand .brand img.logo-dark { display: none; }
+.footer-brand .brand img.logo-light { display: block; }
 .brand span {
   font-family: 'Fraunces';
   font-weight: 700;
