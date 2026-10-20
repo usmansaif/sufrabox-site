@@ -1198,3 +1198,6 @@ table.menu-table tr:last-child td { border-bottom: none; }
 .cta-band h3 { font-family: 'Fraunces'; font-size: 24px; margin: 0 0 8px; font-weight: 600; }
 .cta-band p { font-size: 14.5px; color: rgba(245,250,255,.72); margin: 0; max-width: 460px; }
 .cta-band .btn { flex: none; }
+
+.product-price { font-family: 'Fraunces'; font-size: 32px; font-weight: 700; color: var(--navy); line-height: 1.1; margin: 0 0 12px; }
+.product-price small { font-family: 'Plus Jakarta Sans'; font-size: 15px; font-weight: 600; color: var(--charcoal); }
